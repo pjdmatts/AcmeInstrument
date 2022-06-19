@@ -1,6 +1,7 @@
 #include <iostream>
+#include "instrument.h"
 
 int main() {
-    std::cout << "Welcome to Acme Instrument" << "\n";
-    return 0;
+    Instrument instrument = Instrument();
+    instrument.Greeting();
 }

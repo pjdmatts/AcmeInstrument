@@ -7,4 +7,6 @@ set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
 project(AcmeInstrument)
 
-add_executable(AcmeInstrument src/acme_instrument.cpp)
+file(GLOB project_SRCS src/*.cpp)
+
+add_executable(AcmeInstrument ${project_SRCS})
