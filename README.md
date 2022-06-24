@@ -1,18 +1,12 @@
 # AcmeInstrument
 
-ToDo List:
+### ToDo Items
 
-### Solar System Exploration, 1950s – 1960s
-
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+- [ ] DataIn Class
+- [ ] Analysis Class
+- [ ] Plotter Class
+- [ ] Instrument Class
+- [ ] README Updates
 
 ## README
 
