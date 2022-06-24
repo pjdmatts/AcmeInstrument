@@ -2,6 +2,7 @@
 
 ### ToDo Items
 
+- [ ] Data Class
 - [ ] DataIn Class
 - [ ] Analysis Class
 - [ ] Plotter Class
