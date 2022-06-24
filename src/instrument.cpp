@@ -1,6 +1,6 @@
 #include "instrument.h"
 
-void Instrument::Greeting()
+void Instrument::InstrumentGreeting()
 {
     std::cout <<"Welcome to ACME Instrument"<<std::endl;
 }
