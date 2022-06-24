@@ -10,3 +10,8 @@ void Plotter::MakePlot()
     plot(x, y, "-o");
     show();
 }
+
+void Plotter::Greeting()
+{
+    std::cout <<"I am doing Plotting Things Now"<<std::endl;
+}

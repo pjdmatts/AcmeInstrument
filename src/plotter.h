@@ -8,6 +8,7 @@ class Plotter
 {
     public:
     void MakePlot();
+    void Greeting();
 };
 
 #endif
