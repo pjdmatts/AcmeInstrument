@@ -52,7 +52,7 @@ void DataIn::Input()
     else
         std::cout << "Sorry, nothing by that name" << std::endl;
 
-    data->setXData(column_x);
-    data->setYData(column_y);
+    //data->setXData(column_x);
+    //data->setYData(column_y);
     
 }
