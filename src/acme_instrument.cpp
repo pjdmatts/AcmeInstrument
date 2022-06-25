@@ -14,6 +14,7 @@ int main() {
     //Ask for user input
     instrument.DataInputGreeting();
     //Create a data object from the user input
+    std::unique_ptr<Data> data(new Data());
     instrument.DataInput();
     instrument.DataGreeting();
     //Ask the user what kind of analysis they want to do

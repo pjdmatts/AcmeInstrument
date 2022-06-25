@@ -2,23 +2,33 @@
 #include <iostream>    /* printf */
 #include <math.h>       /* sin */
 #include <vector>
-using std::vector;
-using std::cout;
+#include <fstream>
 
 #define PI 3.14159265
 
-void fill_vec(vector<float>& vec, float a, float inc, float b)
+void fill_vec(std::vector<float>& vec, float a, float inc, float b)
 {
     for(float n = a; n <= b; n += inc)
       vec.push_back(n);
 }
 
-void cos_vec(vector<float>& vec1, vector<float>& vec2, float A, float fc, float phi) 
+void cos_vec(std::vector<float>& vec1, std::vector<float>& vec2, float A, float fc, float phi) 
 {
   for(float t : vec1) {
-    float x = A*cos(2*PI*fc*t+phi);
-    vec2.push_back(x);
+    float y = A*cos(2*PI*fc*t+phi);
+    vec2.push_back(y);
 }
+}
+
+void make_file(std::vector<float>& x, std::vector<float>& y)
+{
+std::ofstream myFile("foo.csv");
+  for(int i = 0; i < x.size(); ++i)
+    {
+        myFile << x.at(i) << "," << y.at(i) <<"\n";
+
+    }
+    myFile.close();
 }
 
 int main(){
@@ -27,10 +37,11 @@ int main(){
   float phase=30; //desired phase shift of the cosine in degrees
   float fs=32*fc; //sampling frequency with oversampling factor 32
   float phi = phase*PI/180; //convert phase shift in degrees in radians
-  vector<float> t_vec;
-  vector<float> x_vec;
-  fill_vec(t_vec, 0.0, 1/fs, 2-1/fs);  
-  cos_vec(t_vec, x_vec, A, fc, phi);
+  std::vector<float> x_vec;
+  std::vector<float> y_vec;
+  fill_vec(x_vec, 0.0, 1/fs, 2-1/fs);  
+  cos_vec(x_vec, y_vec, A, fc, phi);
+  make_file(x_vec, y_vec);
 }
 
 
