@@ -23,8 +23,6 @@ void DataIn::Input()
     std::vector<float> column_x;
     std::vector<float> column_y;
 
-    std::unique_ptr<Data> data(new Data());
-
     std::cout << "Please Provide the path to the file you would like to analyze" << std::endl;
     std::getline(std::cin, filepath);
     std::stringstream(filepath) >> filepath;
