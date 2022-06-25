@@ -10,7 +10,7 @@ class DataIn
 {
     public:
     void Greeting();
-    std::unique_ptr<Data> Input();
+    void Input();
 };
 
 #endif
