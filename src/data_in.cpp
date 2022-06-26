@@ -20,8 +20,8 @@ std::shared_ptr<Data> DataIn::Input()
     std::string filepath;
     std::ifstream my_file;
 
-    std::vector<float> column_x;
-    std::vector<float> column_y;
+    std::vector<double> column_x;
+    std::vector<double> column_y;
 
     auto data_ptr = std::shared_ptr<Data>{new Data()}; 
 
@@ -41,9 +41,9 @@ std::shared_ptr<Data> DataIn::Input()
         while (getline(my_file, line))
         {
             std::istringstream sline(line);
-            int a;
+            double a;
             char b;
-            int c;
+            double c;
             while (sline >> a >> b >> c)
             {
                 column_x.push_back(a);

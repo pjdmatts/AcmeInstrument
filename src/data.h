@@ -12,18 +12,19 @@ public:
     // Data();
 
     // getters/setters
-    void setXData(std::vector<float> x_data) {_x_data = x_data;};
-    void setYData(std::vector<float> y_data) {_y_data = y_data;};
-    std::vector<float> getXData();
-    std::vector<float> getYData();
+    void setXData(std::vector<double> x_data) {_x_data = x_data;};
+    void setYData(std::vector<double> y_data) {_y_data = y_data;};
+    std::vector<double> getXData();
+    std::vector<double> getYData();
 
     // behavior methods
     void Greeting();
-    
+    void printXData();
+    void printYData();
 
 private:
-    std::vector<float> _x_data;
-    std::vector<float> _y_data;
+    std::vector<double> _x_data;
+    std::vector<double> _y_data;
 };
 
 #endif
