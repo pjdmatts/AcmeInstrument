@@ -13,10 +13,11 @@ class Instrument
 public:
     void InstrumentGreeting();
     void DataInputGreeting() { input.Greeting(); }
-    void DataInput() { input.Input(); }
-    void DataGreeting() { data.Greeting(); }
-    void AnalysisGreeting() { analysis.Greeting(); }
-    void PlotGreeting() { plot.Greeting(); }
+    //std::shared_ptr<Data> DataInput() { input.Input(); }
+    //void DataGreeting() { data.Greeting(); }
+    //void AnalysisGreeting() { analysis.Greeting(); }
+    //void PlotGreeting() { plot.Greeting(); }
+    //void MakePlot() {plot.MakePlot(); }
 
 private:
     DataIn input;

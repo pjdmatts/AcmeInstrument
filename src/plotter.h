@@ -3,11 +3,12 @@
 
 
 #include <iostream>
+#include "data.h"
 
 class Plotter
 {
     public:
-    void MakePlot();
+    void MakePlot(std::shared_ptr<Data> plot_data);
     void Greeting();
 };
 

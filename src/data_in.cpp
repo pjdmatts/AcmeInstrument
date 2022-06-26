@@ -15,13 +15,15 @@ void DataIn::Greeting()
     std::cout << "I can take a two column csv file as an input" << std::endl;
 }
 
-void DataIn::Input()
+std::shared_ptr<Data> DataIn::Input()
 {
     std::string filepath;
     std::ifstream my_file;
 
     std::vector<float> column_x;
     std::vector<float> column_y;
+
+    auto data_ptr = std::shared_ptr<Data>{new Data()}; 
 
     std::cout << "Please Provide the path to the file you would like to analyze" << std::endl;
     std::getline(std::cin, filepath);
@@ -52,7 +54,8 @@ void DataIn::Input()
     else
         std::cout << "Sorry, nothing by that name" << std::endl;
 
-    //data->setXData(column_x);
-    //data->setYData(column_y);
+    data_ptr->setXData(column_x);
+    data_ptr->setYData(column_y);
     
+    return data_ptr;
 }

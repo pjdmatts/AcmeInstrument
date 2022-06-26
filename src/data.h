@@ -14,6 +14,8 @@ public:
     // getters/setters
     void setXData(std::vector<float> x_data) {_x_data = x_data;};
     void setYData(std::vector<float> y_data) {_y_data = y_data;};
+    std::vector<float> getXData();
+    std::vector<float> getYData();
 
     // behavior methods
     void Greeting();

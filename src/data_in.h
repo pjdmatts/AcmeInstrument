@@ -10,7 +10,7 @@ class DataIn
 {
     public:
     void Greeting();
-    void Input();
+    std::shared_ptr<Data> Input();
 };
 
 #endif
