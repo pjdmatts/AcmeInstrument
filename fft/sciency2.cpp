@@ -82,8 +82,8 @@ void fft(Iter_T a, Iter_T b, int log2n)
 int main()
 {
     float A = 0.5;                // amplitude of the cosine wave
-    float fc = 10;                // frequency of the cosine wave
-    float phase = 30;             // desired phase shift of the cosine in degrees
+    float fc = 30;                // frequency of the cosine wave
+    float phase = 0;             // desired phase shift of the cosine in degrees
     float fs = 32 * fc;           // sampling frequency with oversampling factor 32
     float phi = phase * PI / 180; // convert phase shift in degrees in radians
     vector<double> x_vec;
@@ -92,12 +92,19 @@ int main()
     cos_vec(x_vec, y_vec, A, fc, phi);
     make_file(x_vec, y_vec, "foo4.csv");
     // let's understand the size of y_vec
+    cout << "size of x_vec is: " << y_vec.size() << endl;
+    // for (int i = 0; i < x_vec.size(); i++)
+    // {
+    //     cout << x_vec.at(i) << endl;
+    // }
 
     cout << "size of y_vec is: " << y_vec.size() << endl;
     // convert the y_vec into a complex array
     vector<complex<double>> y_cx;
 
-    for (int i = 0; i < y_vec.size(); i++)
+    int N = 512;
+
+    for (int i = 0; i < N; i++)
     {
         complex<double> temp(y_vec[i], 0);
         y_cx.push_back(temp);
@@ -118,7 +125,7 @@ int main()
 
     // Let's try and get the magnitudes next
 
-    int N = 512;
+    
 
     //for (int i = 0; i < N; ++i)
     //    cout << abs(b[i]) << "\n";
@@ -131,7 +138,7 @@ int main()
     vector<double> abs_vec;
 
     for (int i = -N/2; i < N/2; i++){
-        f_vec.push_back(i*df);
+        f_vec.push_back(i*df/(2*PI));
     }
 
     for(int i = 0; i < N; i++){
