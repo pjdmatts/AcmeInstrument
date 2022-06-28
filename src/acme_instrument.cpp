@@ -6,6 +6,7 @@
 #include "data.h"
 #include "analysis.h"
 #include "plotter.h"
+#include "plotter2.h"
 
 
 int main() {
@@ -25,8 +26,8 @@ int main() {
     
     //auto data_ptr = instrument.DataInput();
 
-    Plotter plot = Plotter();
-    plot.MakePlot(data_ptr);
+    Plotter2 plot = Plotter2();
+    plot.MakePlot();
 
     //instrument.DataGreeting();
 
