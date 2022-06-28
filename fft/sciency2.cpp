@@ -26,9 +26,9 @@ void cos_vec(vector<double> &vec1, vector<double> &vec2, float A, float fc, floa
     }
 }
 
-void make_file(vector<double> &x, vector<double> &y)
+void make_file(vector<double> &x, vector<double> &y, string filename)
 {
-    ofstream myFile("foo3.csv");
+    ofstream myFile(filename);
     for (int i = 0; i < x.size(); ++i)
     {
         myFile << x.at(i) << "," << y.at(i) << "\n";
@@ -90,7 +90,7 @@ int main()
     vector<double> y_vec;
     fill_vec(x_vec, 0.0, 1 / fs, 2 - 1 / fs);
     cos_vec(x_vec, y_vec, A, fc, phi);
-    // make_file(x_vec, y_vec);
+    make_file(x_vec, y_vec, "foo4.csv");
     // let's understand the size of y_vec
 
     cout << "size of y_vec is: " << y_vec.size() << endl;
@@ -111,12 +111,33 @@ int main()
     copy(y_cx.begin(), y_cx.end(), a);
     cx b[y_cx.size()];
 
-    //Doing fft things
-    fft(a, b, 8);
-    for (int i = 0; i < 256; ++i)
-        cout << b[i] << "\n";
+    // Doing fft things
+    fft(a, b, 9);
+    // for (int i = 0; i < 256; ++i)
+    //     cout << b[i] << "\n";
 
-    //Let's try and get the magnitudes next
+    // Let's try and get the magnitudes next
 
+    int N = 512;
+
+    //for (int i = 0; i < N; ++i)
+    //    cout << abs(b[i]) << "\n";
+
+    //so that worked, we guess
+
+    double df=fs/N; //frequency resolution
+
+    vector<double> f_vec;
+    vector<double> abs_vec;
+
+    for (int i = -N/2; i < N/2; i++){
+        f_vec.push_back(i*df);
+    }
+
+    for(int i = 0; i < N; i++){
+        abs_vec.push_back(abs(b[i]));
+    }
+
+    make_file(f_vec, abs_vec, "abs.csv");
 
 }
