@@ -120,31 +120,26 @@ int main()
 
     // Doing fft things
     fft(a, b, 9);
-    // for (int i = 0; i < 256; ++i)
-    //     cout << b[i] << "\n";
 
-    // Let's try and get the magnitudes next
-
-    
-
-    //for (int i = 0; i < N; ++i)
-    //    cout << abs(b[i]) << "\n";
-
-    //so that worked, we guess
+    // for (int i = 0; i < N; i++)
+    //     cout << abs(b[i]) << "\n";
 
     double df=fs/N; //frequency resolution
-
     vector<double> f_vec;
     vector<double> abs_vec;
 
-    for (int i = -N/2; i < N/2; i++){
-        f_vec.push_back(i*df/(2*PI));
+    for (int i = 0; i < N/2; i++){
+        f_vec.push_back(i*df);
     }
 
-    for(int i = 0; i < N; i++){
+    for(int i = 0; i < N/2; i++){
         abs_vec.push_back(abs(b[i]));
     }
 
     make_file(f_vec, abs_vec, "abs.csv");
+
+    cout << "fs is: " << df << endl;
+    cout << "size of f_vec is: " << f_vec.size() << endl;
+    cout << "size of abs_vec is: " << abs_vec.size() << endl;
 
 }
