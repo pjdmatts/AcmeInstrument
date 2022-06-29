@@ -2,11 +2,11 @@
 
 ### ToDo Items
 
-- [ ] Data Class
-- [ ] DataIn Class
+- [x] Data Class
+- [x] DataIn Class
 - [ ] Analysis Class
-- [ ] Plotter Class
-- [ ] Instrument Class
+- [x] Plotter Class
+- [x] Instrument Class
 - [ ] README Updates
 
 ## README
