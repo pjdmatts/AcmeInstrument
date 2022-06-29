@@ -9,7 +9,6 @@ class Analysis
 public:
     void Greeting();
     int Choice();
-    void Passthrough(std::shared_ptr<Data> plot_data);
+    void Switch(int a, std::shared_ptr<Data> plot_data);
 };
-
 #endif

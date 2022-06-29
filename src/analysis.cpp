@@ -1,4 +1,10 @@
 // Figuring out data in
+// for <streamsize>
+#include<ios>    
+// for numeric_limits
+#include<limits>
+#include <chrono>
+#include <thread>
 #include "analysis.h"
 #include "plotter.h"
 
@@ -14,13 +20,26 @@ int Analysis::Choice()
     std::cout << "Enter 0 for a passthrough to view the data" << std::endl;
     std::cout << "And enter 1 for an FFT of the data" << std::endl;
     std::cin >> a;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     return a;
 }
 
-void Analysis::Passthrough(std::shared_ptr<Data> plot_data)
+void Analysis::Switch(int a, std::shared_ptr<Data> plot_data)
 {
-    Plotter plot = Plotter();
-    plot.MakePlot(plot_data);
+    if (a == 0)
+    {
+        std::cout << "You selected to Pass Right Through" << std::endl;
+        Plotter plot = Plotter();
+        plot.MakePlot(plot_data);
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::cout << '\n';
+    }
+    else if (a == 1)
+    {
+        std::cout << "You selected to do Fast Fourier Transform" << std::endl;
+    }
+    else
+    {
+        std::cout << "I am not sure what you need" << std::endl;
+    }
 }
-
-
