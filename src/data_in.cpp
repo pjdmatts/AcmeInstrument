@@ -11,7 +11,6 @@
 
 void DataIn::Greeting()
 {
-    std::cout << "Data Input Time!" << std::endl;
     std::cout << "I can take a two column csv file as an input" << std::endl;
 }
 

@@ -1,8 +1,3 @@
-#include <iostream>
-#include <memory>
-#include <vector>
-#include <chrono>
-#include <thread>
 #include "instrument.h"
 #include "data_in.h"
 #include "data.h"
@@ -20,7 +15,5 @@ int main() {
     analysis.Greeting();
     int choice;
     choice = analysis.Choice();
-    //std::cout <<"You chose: " << choice << std::endl;
-    //std::this_thread::sleep_for(std::chrono::milliseconds(500));
     analysis.Switch(choice, data_ptr);
 }
