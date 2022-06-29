@@ -1,8 +1,5 @@
-// Figuring out data in
-// for <streamsize>
-#include<ios>    
-// for numeric_limits
-#include<limits>
+#include<ios>       // for <streamsize>
+#include<limits>    // for numeric_limits
 #include <chrono>
 #include <thread>
 #include "analysis.h"
@@ -31,8 +28,6 @@ void Analysis::Switch(int a, std::shared_ptr<Data> plot_data)
         std::cout << "You selected to Pass Right Through" << std::endl;
         Plotter plot = Plotter();
         plot.MakePlot(plot_data);
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        std::cout << '\n';
     }
     else if (a == 1)
     {
