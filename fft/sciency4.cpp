@@ -6,6 +6,8 @@
 #include <complex>
 #include <cmath>
 #include <iterator>
+#include "data.h"
+#include "data_in.h"
 
 using namespace std;
 
@@ -49,11 +51,11 @@ unsigned int bitReverse(unsigned int x, int log2n)
     return n;
 }
 
-//template <class Iter_T>
-void fft(vector<complex<double> > a, vector<complex<double> > b, int log2n)
+template <class Iter_T>
+void fft(Iter_T a, Iter_T b, int log2n)
 {
-    //typedef typename iterator_traits<Iter_T>::value_type complex;
-    const complex<double>  J(0, 1);
+    typedef typename iterator_traits<Iter_T>::value_type complex;
+    const complex J(0, 1);
     int n = 1 << log2n;
     for (unsigned int i = 0; i < n; ++i)
     {
@@ -63,14 +65,14 @@ void fft(vector<complex<double> > a, vector<complex<double> > b, int log2n)
     {
         int m = 1 << s;
         int m2 = m >> 1;
-        complex<double>  w(1, 0);
-        complex<double>  wm = exp(-J * (PI / m2));
+        complex w(1, 0);
+        complex wm = exp(-J * (PI / m2));
         for (int j = 0; j < m2; ++j)
         {
             for (int k = j; k < n; k += m)
             {
-                complex<double>  t = w * b[k + m2];
-                complex<double>  u = b[k];
+                complex t = w * b[k + m2];
+                complex u = b[k];
                 b[k] = u + t;
                 b[k + m2] = u - t;
             }
@@ -81,27 +83,20 @@ void fft(vector<complex<double> > a, vector<complex<double> > b, int log2n)
 
 int main()
 {
-    float A = 0.5;                // amplitude of the cosine wave
-    float fc = 10;                // frequency of the cosine wave
-    float phase = 0;             // desired phase shift of the cosine in degrees
+    DataIn datain = DataIn();
+    datain.Greeting();
+    auto data_ptr = datain.Input();
+    std::vector<double> x_vec = data_ptr->getXData();
+    std::vector<double> y_vec = data_ptr->getYData();
+    float fc = 30;                // frequency of the cosine wave
     float fs = 32 * fc;           // sampling frequency with oversampling factor 32
-    float phi = phase * PI / 180; // convert phase shift in degrees in radians
     vector<double> x_vec;
     vector<double> y_vec;
-    fill_vec(x_vec, 0.0, 1 / fs, 2 - 1 / fs);
-    cos_vec(x_vec, y_vec, A, fc, phi);
-    make_file(x_vec, y_vec, "foo4.csv");
     // let's understand the size of y_vec
     cout << "size of x_vec is: " << y_vec.size() << endl;
-    // for (int i = 0; i < x_vec.size(); i++)
-    // {
-    //     cout << x_vec.at(i) << endl;
-    // }
-
     cout << "size of y_vec is: " << y_vec.size() << endl;
     // convert the y_vec into a complex array
-    vector<complex<double> > y_cx;
-    vector<complex<double> > b;
+    vector<complex<double>> y_cx;
 
     int N = 512;
 
@@ -114,13 +109,13 @@ int main()
 
     // fft we got from c++ cookbook needs an array
 
-    // typedef complex<double> cx;
-    // cx a[y_cx.size()];
-    // copy(y_cx.begin(), y_cx.end(), a);
-    // cx b[y_cx.size()];
+    typedef complex<double> cx;
+    cx a[y_cx.size()];
+    copy(y_cx.begin(), y_cx.end(), a);
+    cx b[y_cx.size()];
 
     // Doing fft things
-    fft(y_cx, b, 9);
+    fft(a, b, 9);
 
     // for (int i = 0; i < N; i++)
     //     cout << abs(b[i]) << "\n";
