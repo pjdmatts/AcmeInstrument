@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 
+
 #include "data_in.h"
 #include "data.h"
 
@@ -51,7 +52,8 @@ std::shared_ptr<Data> DataIn::Input()
         }
     }
     else
-        std::cout << "Sorry, nothing by that name" << std::endl;
+        throw std::invalid_argument("Please check for a valid file name");
+
 
     data_ptr->setXData(column_x);
     data_ptr->setYData(column_y);

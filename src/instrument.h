@@ -21,9 +21,6 @@ public:
 
 private:
     DataIn input;
-    Data data;
-    Analysis analysis;
-    Plotter plot;
 };
 
 #endif
