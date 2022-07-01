@@ -13,8 +13,8 @@ std::string Plotter::MakeFile(std::shared_ptr<Data> plot_data)
     /**need to get the contents of plot_data and make a csv file**/
     std::string filename = "plot.csv";
     std::ofstream myFile(filename);
-    std::vector x = plot_data->getXData();
-    std::vector y = plot_data->getYData();
+    std::vector<double> x = plot_data->getXData();
+    std::vector<double> y = plot_data->getYData();
     for (int i = 0; i < x.size(); ++i)
     {
         myFile << x.at(i) << "," << y.at(i) << "\n";
