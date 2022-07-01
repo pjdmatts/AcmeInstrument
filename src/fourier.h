@@ -13,7 +13,7 @@
 class Fourier 
 {
     public:
-    void perform_fft(std::shared_ptr<Data> input_data);
+    std::shared_ptr<Data> perform_fft(std::shared_ptr<Data> input_data);
 };
 
 #endif

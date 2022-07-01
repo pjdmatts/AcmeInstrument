@@ -37,12 +37,11 @@ void Analysis::Switch(int a, std::shared_ptr<Data> plot_data)
         std::cout << "You selected to do Fast Fourier Transform" << std::endl;
         std::shared_ptr<Data> analysis_data;
         //Do Stuff to plot_data to create analysis_data
-        analysis_data = plot_data;
         Fourier fourier = Fourier();
-        fourier.perform_fft(analysis_data);
-        //Plotter plot = Plotter();
-        //std::string analysis_file = plot.MakeFile(analysis_data);
-        //plot.MakePlot(analysis_file);
+        analysis_data = fourier.perform_fft(plot_data);
+        Plotter plot = Plotter();
+        std::string analysis_file = plot.MakeFile(analysis_data);
+        plot.MakePlot(analysis_file);
     }
     else
     {
