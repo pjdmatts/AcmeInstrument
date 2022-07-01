@@ -87,7 +87,11 @@
         "locale": "cpp",
         "queue": "cpp",
         "stack": "cpp",
-        "__tree": "cpp"
+        "__tree": "cpp",
+        "cassert": "cpp",
+        "cerrno": "cpp",
+        "cfloat": "cpp",
+        "climits": "cpp"
     },
     "cmake.configureOnOpen": true
 }
