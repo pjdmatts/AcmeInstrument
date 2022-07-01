@@ -1,18 +1,40 @@
+#include <cmath>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <vector>
+#include "gnuplot.h"
 #include "plotter.h"
 #include "data.h"
-#include <cmath>
-#include <matplot/matplot.h>
 
-void Plotter::MakePlot(std::shared_ptr<Data> plot_data)
+std::string Plotter::MakeFile(std::shared_ptr<Data> plot_data)
 {
-    using namespace matplot;
-    std::vector<double> x = plot_data->getXData();
-    std::vector<double> y = plot_data->getYData();
-    plot(x, y);
-    show();
+    /**need to get the contents of plot_data and make a csv file**/
+    std::string filename = "plot.csv";
+    std::ofstream myFile(filename);
+    std::vector x = plot_data->getXData();
+    std::vector y = plot_data->getYData();
+    for (int i = 0; i < x.size(); ++i)
+    {
+        myFile << x.at(i) << "," << y.at(i) << "\n";
+    }
+    myFile.close();
+    return filename;
+}
+
+void Plotter::MakePlot(std::string input_file)
+{
+    /**Simplified Plotter**/
+    std::string begin = "plot \"";
+    std::string end = "\" with lines";
+    std::string command = begin + input_file + end;
+    GnuplotPipe gp;
+    gp.sendLine("set datafile separator \',\'");
+    gp.sendLine(command);
 }
 
 void Plotter::Greeting()
 {
-    std::cout <<"I am doing Plotting Things Now"<<std::endl;
+    std::cout << "I am doing Plotting Things Now" << std::endl;
 }

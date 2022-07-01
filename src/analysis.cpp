@@ -27,7 +27,8 @@ void Analysis::Switch(int a, std::shared_ptr<Data> plot_data)
     {
         std::cout << "You selected to Pass Right Through" << std::endl;
         Plotter plot = Plotter();
-        plot.MakePlot(plot_data);
+        std::string passtrhough_file = plot.MakeFile(plot_data);
+        plot.MakePlot(passtrhough_file);
     }
     else if (a == 1)
     {
